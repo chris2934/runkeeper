@@ -18,6 +18,7 @@
         ></v-col>
         <v-col cols="12" md="4">
           <v-select
+            ref="activity"
             v-model="select"
             label="Activity Type"
             :items="items"
@@ -25,10 +26,15 @@
           ></v-select>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field v-model="this.currentDate" label="Date"></v-text-field>
+          <v-text-field
+            v-model="this.currentDate"
+            label="Date"
+            readonly
+          ></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
           <v-text-field
+            readonly
             v-model="this.currentTime"
             label="Time of Day"
           ></v-text-field>
@@ -57,9 +63,9 @@ export default {
   },
   methods: {
     clear() {
-      this.$refs["name"].value = "";
-      this.$refs["notes"].value = "";
-      this.select = "";
+      this.$refs.name.reset();
+      this.$refs.notes.reset();
+      this.$refs.activity.reset();
     },
   },
 };
